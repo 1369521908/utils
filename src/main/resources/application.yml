@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 172.173.174.205)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)  (SERVICE_NAME = YGEAMDB)))
+    username: YG
+    password: YG
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+mybatis-plus:
+  type-aliases-package: com.gz.utils.entity
+  mapper-locations: classpath:mapper/*.xml # XML文件位置 指定DAO与SQL语句关联
+
