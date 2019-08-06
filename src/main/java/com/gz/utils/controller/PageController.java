@@ -14,4 +14,10 @@ public class PageController {
     public String upload(){
         return "upload";
     }
+
+    @RequestMapping("/insert")
+    public String insert(){
+        return "insert";
+    }
+
 }

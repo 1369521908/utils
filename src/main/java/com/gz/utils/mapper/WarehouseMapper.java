@@ -15,5 +15,5 @@ import java.util.List;
 @Repository
 public interface WarehouseMapper extends BaseMapper<Warehouse> {
 
-    public List<Warehouse> getAllWarehouse();
+    List<Warehouse> getAllWarehouse();
 }

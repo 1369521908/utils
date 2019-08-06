@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface WarehouseService {
 
-    public List<Warehouse> getAllWarehouse();
+    List<Warehouse> getAllWarehouse();
 
 }

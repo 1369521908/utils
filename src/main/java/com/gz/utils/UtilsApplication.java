@@ -1,5 +1,6 @@
 package com.gz.utils;
 
+import com.gz.utils.constant.DestinyConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,8 +20,8 @@ public class UtilsApplication {
     @Bean
     MultipartConfigElement multipartConfigElement(){
         MultipartConfigFactory factory=new MultipartConfigFactory();
-        factory.setLocation("D:/alpha/temp");
-        log.info("[ 启动springboot ] , 设置自定义临时上传文件夹");
+        factory.setLocation(DestinyConstant.DEFAULT_UPLOAD_FOLDER);
+        log.info("[ 启动 SpringBoot 成功 ] , 设置自定义临时上传文件夹");
         return factory.createMultipartConfig();
 
     }

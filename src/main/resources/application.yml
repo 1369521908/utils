@@ -1,10 +1,23 @@
 spring:
+  #  配置Oracle数据库
+  #  datasource:
+  #    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 172.173.174.205)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)  (SERVICE_NAME = YGEAMDB)))
+  #    username: YG
+  #    password: YG
+  #    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+  #    配置MySQL数据库
   datasource:
-    url: jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 172.173.174.205)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)  (SERVICE_NAME = YGEAMDB)))
-    username: YG
-    password: YG
-    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:mysql://127.0.0.1:3306/destiny?useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 配置 mybatis-plus
 mybatis-plus:
   type-aliases-package: com.gz.utils.entity
   mapper-locations: classpath:mapper/*.xml # XML文件位置 指定DAO与SQL语句关联
 
+#  服务配置
+server:
+  port: 9527
