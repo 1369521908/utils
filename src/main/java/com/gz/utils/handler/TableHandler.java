@@ -1,6 +1,6 @@
 package com.gz.utils.handler;
 
-import com.gz.utils.entity.LayuiTableHeader;
+import com.gz.entity.LayuiTableHeader;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;

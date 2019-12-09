@@ -15,7 +15,7 @@ spring:
 
 # 配置 mybatis-plus
 mybatis-plus:
-  type-aliases-package: com.gz.utils.entity
+  type-aliases-package: com.gz.entity
   mapper-locations: classpath:mapper/*.xml # XML文件位置 指定DAO与SQL语句关联
 
 #  服务配置

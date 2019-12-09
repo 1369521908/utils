@@ -4,7 +4,7 @@
 <mapper namespace="com.gz.utils.mapper.WarehouseMapper" >
 
 
-    <select id="getAllWarehouse" resultType="com.gz.utils.entity.Warehouse">
+    <select id="getAllWarehouse" resultType="com.gz.entity.Warehouse">
         select t.* from MTL_INV t where 1 = 1
     </select>
 </mapper>

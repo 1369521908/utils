@@ -1,4 +1,4 @@
-package com.gz.utils.entity;
+package com.gz.entity;
 
 import lombok.Data;
 

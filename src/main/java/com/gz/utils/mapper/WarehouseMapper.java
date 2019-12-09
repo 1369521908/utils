@@ -1,7 +1,7 @@
 package com.gz.utils.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gz.utils.entity.Warehouse;
+import com.gz.entity.Warehouse;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

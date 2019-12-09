@@ -1,6 +1,6 @@
 package com.gz.utils.service.impl;
 
-import com.gz.utils.entity.Warehouse;
+import com.gz.entity.Warehouse;
 import com.gz.utils.mapper.WarehouseMapper;
 import com.gz.utils.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;

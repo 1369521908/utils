@@ -1,14 +1,10 @@
 package com.gz.utils.controller;
 
 import com.gz.utils.VO.ResultVO;
-import com.gz.utils.entity.LayuiTableHeader;
-import com.gz.utils.entity.User;
-import com.gz.utils.entity.Warehouse;
+import com.gz.entity.LayuiTableHeader;
+import com.gz.entity.Warehouse;
 import com.gz.utils.handler.TableHandler;
 import com.gz.utils.service.impl.WarehouseServiceImpl;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

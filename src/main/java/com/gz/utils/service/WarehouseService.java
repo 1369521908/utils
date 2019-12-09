@@ -1,6 +1,6 @@
 package com.gz.utils.service;
 
-import com.gz.utils.entity.Warehouse;
+import com.gz.entity.Warehouse;
 
 import java.util.List;
 
