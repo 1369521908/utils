@@ -1,13 +1,9 @@
 package com.gz.util;
 
-import cn.hutool.db.Db;
-import cn.hutool.db.Entity;
-import com.alibaba.fastjson.JSONObject;
 import com.gz.entity.User;
 import com.gz.reflect.ConvertUtil;
 
 import java.sql.SQLException;
-import java.util.List;
 
 // @SpringBootApplication
 public class UtilApplication {
@@ -24,14 +20,11 @@ public class UtilApplication {
 
     public static void demo() throws SQLException {
 
+        String all = ConvertUtil.getAll(User.class);
         // SerializeConfig config = new SerializeConfig();
         // config.propertyNamingStrategy = PropertyNamingStrategy.SnakeCase;
-        // all = config.propertyNamingStrategy.translate((String) all);
-
-        String all = ConvertUtil.getAll(User.class);
-
-        List<Entity> query = Db.use().query(all);
-        System.out.println(JSONObject.toJSONString(query));
+        // all = config.propertyNamingStrategy.translate(all);
+        System.out.println(all);
 
 
 

@@ -1,6 +1,6 @@
 package com.gz.entity;
 
-import com.gz.crud.annotation.Field;
+import com.gz.crud.annotation.FieldName;
 import com.gz.crud.annotation.Table;
 import lombok.Data;
 
@@ -13,16 +13,16 @@ import lombok.Data;
 @Table("demo")
 public class Demo extends Base {
 
-    @Field("note")
+    @FieldName("note")
     private Integer id;
 
-    @Field("name")
+    @FieldName("name")
     private String name;
 
-    @Field("sex")
+    @FieldName("sex")
     private String sex;
 
-    @Field("num")
+    @FieldName("num")
     private String num;
 
     // @Field("CONTACT_ID_LIST")

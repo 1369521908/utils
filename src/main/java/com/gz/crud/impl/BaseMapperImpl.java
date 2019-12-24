@@ -14,28 +14,27 @@ public class BaseMapperImpl<T extends Class> implements BaseMapper {
 
 
     @Override
-    public List<T> getAll() {
-
+    public List<T> getAll(Class clz) {
         return null;
     }
 
     @Override
-    public Page getPage() {
+    public Page getPage(Class clz) {
         return null;
     }
 
     @Override
-    public int insert() {
+    public int insert(Class clz) {
         return 0;
     }
 
     @Override
-    public int update() {
+    public int update(Class clz) {
         return 0;
     }
 
     @Override
-    public int delete() {
+    public int delete(Class clz) {
         return 0;
     }
 }

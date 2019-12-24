@@ -3,6 +3,8 @@ package com.gz.reflect;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.log.StaticLog;
 import com.alibaba.fastjson.JSONObject;
+import com.gz.crud.annotation.FieldIgnore;
+import com.gz.crud.annotation.FieldName;
 import com.sun.istack.internal.NotNull;
 
 import java.lang.annotation.Annotation;
@@ -14,6 +16,16 @@ import java.lang.reflect.Field;
  * @Description
  */
 public class ConvertUtil {
+
+    /**
+     * 反射的字段名称
+     */
+    private static final String FIELD_NAME = "name";
+
+    /**
+     * 序列化id名称
+     */
+    private static final String SERIAL_VERSION_UID = "serialVersionUID";
 
     private static final String TARGET = ConvertUtil.class.getName();
 
@@ -53,7 +65,37 @@ public class ConvertUtil {
      * @param clz 需要转换成sql的Entity
      * @return sql语句
      */
-    public static <T> String getAll(@NotNull Class<T> clz) {
+    public static String getAll(@NotNull Class clz) {
+        return SELECT + fieldsConvert(clz) + FROM + clz.getSimpleName();
+    }
+
+    /**
+     * 给定类,新增语句
+     *
+     * @param clz
+     * @return
+     */
+    public static String insert(@NotNull Class clz) {
+        return SELECT + fieldsConvert(clz) + FROM + clz.getSimpleName();
+    }
+
+    /**
+     * 给定类,更新语句
+     *
+     * @param clz
+     * @return
+     */
+    public static String update(@NotNull Class clz) {
+        return SELECT + fieldsConvert(clz) + FROM + clz.getSimpleName();
+    }
+
+    /**
+     * 给定类,删除语句
+     *
+     * @param clz
+     * @return
+     */
+    public static String delete(@NotNull Class clz) {
         return SELECT + fieldsConvert(clz) + FROM + clz.getSimpleName();
     }
 
@@ -66,10 +108,10 @@ public class ConvertUtil {
      */
     private static String tableConvert(@NotNull Class clz) {
         // 获取类名称
-        String simpleName = clz.getSimpleName();
-        if (haveAnnotation(clz.getAnnotation(clz))) {
-            // TODO
-        }
+        // String simpleName = clz.getSimpleName();
+        // if (haveAnnotation(clz.getAnnotation(clz))) {
+        //     // TODO
+        // }
         return null;
     }
 
@@ -82,19 +124,35 @@ public class ConvertUtil {
      */
     private static String fieldsConvert(@NotNull Class clz) {
 
+        if (!clz.isAnnotationPresent(Field.class)) {
+            System.out.println("注意!!!,该类没有使用Field注解:" + clz.getName());
+        }
+
         // 获取类的字段列表
         Field[] fields = ReflectUtil.getFields(clz);
-
+        System.out.println(JSONObject.toJSONString(fields));
         // 空格占位
         StringBuilder fieldAppend = new StringBuilder("  ");
 
+        /**
+         * Info infoAnno = (Info) clazz.getAnnotation(Info.class);
+         * System.out.println("person.name :" + infoAnno.value() + ",person.isDelete:" + infoAnno.isDelete());
+         *
+         */
+
         for (int i = 0; i < fields.length; i++) {
 
-            // 冗余字段过滤
-
-
             // 拼接
-            fieldAppend.append(calField(fields[i]));
+            String field = calField(fields[i]);
+
+            // 冗余字段过滤start
+            if (SERIAL_VERSION_UID.equals(field)) {
+                continue;
+            }
+
+            // 冗余字段过滤end
+
+            fieldAppend.append(field);
             if (fields.length - i != 1) {
                 // field => field ,
                 fieldAppend.append(TON);
@@ -121,25 +179,19 @@ public class ConvertUtil {
         String fieldName = field.getName();
 
         for (Annotation annotation : field.getAnnotations()) {
-            if (haveAnnotation(annotation)) {
-                fieldName = JSONObject.parseObject(JSONObject.toJSONString(annotation)).getString("value");
+            fieldName = JSONObject.parseObject(JSONObject.toJSONString(annotation)).getString(FIELD_NAME);
+            FieldName fieldAnnotation = field.getAnnotation(FieldName.class);
+            FieldIgnore ignoreAnnotation = field.getAnnotation(FieldIgnore.class);
+            // 有注解值就取注解的值
+            if (null != fieldAnnotation) {
+                fieldName = fieldAnnotation.value();
+            }
+            if (null != ignoreAnnotation) {
+                if (ignoreAnnotation.value()) {
+                    break;
+                }
             }
         }
         return fieldName;
-    }
-
-    /**
-     * 判断字段是否有注解
-     *
-     * @param annotation 自定义注解
-     * @return 判断结果
-     */
-    private static boolean haveAnnotation(@NotNull Annotation annotation) {
-        //用哈希码判断
-        if (Integer.toHexString(annotation.hashCode()).
-                equals("value")) {
-            return true;
-        }
-        return false;
     }
 }

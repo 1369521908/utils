@@ -1,5 +1,6 @@
 package com.gz.entity;
 
+import com.gz.crud.annotation.FieldIgnore;
 import com.gz.crud.annotation.Table;
 import lombok.Data;
 
@@ -60,7 +61,8 @@ public class User implements Serializable {
     private Date date = new Date();
 
     /**
-     * 表头
+     * token令牌
      */
+    @FieldIgnore
     private String token = "";
 }

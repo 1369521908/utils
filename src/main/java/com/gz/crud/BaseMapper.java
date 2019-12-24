@@ -9,15 +9,45 @@ import java.util.List;
  * @Date 2019/12/7 19:56
  * @Description
  */
-public interface BaseMapper<T extends Class> {
+public interface BaseMapper<T> {
 
-    List<T> getAll();
+    /**
+     * 对象条件查询全部
+     *
+     * @param clz
+     * @return
+     */
+    List<T> getAll(Class<T> clz);
 
-    Page getPage();
+    /**
+     * 对象条件查询分页
+     *
+     * @param clz
+     * @return
+     */
+    Page getPage(Class<T> clz);
 
-    int insert();
+    /**
+     * 新增
+     *
+     * @param clz
+     * @return
+     */
+    int insert(Class<T> clz);
 
-    int update();
+    /**
+     * 更新
+     *
+     * @param clz
+     * @return
+     */
+    int update(Class<T> clz);
 
-    int delete();
+    /**
+     * 删除
+     *
+     * @param clz
+     * @return
+     */
+    int delete(Class<T> clz);
 }

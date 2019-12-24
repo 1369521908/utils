@@ -8,7 +8,13 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-public @interface Table {
+public @interface FieldName {
 
+    /**
+     * 手动映射的数据库字段名称
+     *
+     * @return
+     */
     String value();
+
 }

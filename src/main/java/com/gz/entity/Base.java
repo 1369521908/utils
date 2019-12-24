@@ -1,6 +1,6 @@
 package com.gz.entity;
 
-import com.gz.crud.annotation.Field;
+import com.gz.crud.annotation.FieldName;
 
 import java.util.Date;
 
@@ -11,16 +11,16 @@ import java.util.Date;
  */
 public class Base {
 
-    @Field("CREATION_DATE")
+    @FieldName("CREATION_DATE")
     private Date creationDate;
 
-    @Field("LAST_UPDATED_DATE")
+    @FieldName("LAST_UPDATED_DATE")
     private Date lastUpdatedDate;
 
-    @Field("CREATED_BY")
+    @FieldName("CREATED_BY")
     private String createdBy;
 
-    @Field("LAST_UPDATED_BY")
+    @FieldName("LAST_UPDATED_BY")
     private String lastUpdatedBy;
 
 }
